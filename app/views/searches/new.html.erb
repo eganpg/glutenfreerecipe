@@ -1,0 +1,14 @@
+
+<div class="col-xs-12 col-xs-offset-2">
+<% @matches.each do |m| %>
+
+   	 	<p class="col-xs-3 recipe">
+   	 		<%= m["recipeName"] %>  </br>             
+   	 		<%= image_tag m["imageUrlsBySize"]['90'] %></br>
+   	 		<%= link_to 'Recipe', edit_search_path(m["id"]) %>
+   	 		
+
+   	 </p>
+
+   	 <% end %>
+</div>

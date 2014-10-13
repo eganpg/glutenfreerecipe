@@ -1,0 +1,14 @@
+
+<div class="wrapper">
+<div class="jumbotron">
+  <h1 class="header">Search for Gluten-Free Recipes</h1>
+
+  <p><%= form_tag searches_path, :method => 'post' do %>
+  <div class="col-xs-6 col-xs-offset-3 searchbar"><%= text_field_tag :search, params[:search], class:"form-control col-xs-6", placeholder:"Gluten-Free Only Results" %></div>
+  <%= submit_tag "Search", class:"btn btn-primary searchbar" %>
+<% end %></p>
+  
+</div>
+
+
+</div>
