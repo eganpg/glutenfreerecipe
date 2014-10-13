@@ -1,14 +1,24 @@
+<div class="row">
+	<div class="col-xs-2 header">
+		<h3>New Search Ideas</h3>
+		<% @name.each do |u| %>
+		<%= u.name %></br>
+		<% end %>
 
-<div class="col-xs-12 col-xs-offset-2">
-<% @matches.each do |m| %>
-
-   	 	<p class="col-xs-3 recipe">
-   	 		<%= m["recipeName"] %>  </br>             
-   	 		<%= image_tag m["imageUrlsBySize"]['90'] %></br>
-   	 		<%= link_to 'Recipe', edit_search_path(m["id"]) %>
-   	 		
-
-   	 </p>
-
+	</div>
+	<div class="col-xs-10">
+	<% @matches.each do |m| %>
+   	 	<div class="col-xs-12 recipe">
+   	 		<div class="col-xs-2 vcenter"><h3><%= m["recipeName"] %></h3> </div>             
+   	 		<div class="col-xs-2 vcenter"><%= image_tag m["imageUrlsBySize"]['90'] %></div>
+   	 		<div class="col-xs-2 vcenter"><% m["ingredients"].each do |i| %>
+   	 			<%= i %>,
+   	 			<% end %></div>
+   	 		<% s = m["totalTimeInSeconds"] %>
+   	 		<% time = s.to_i / 60 %>
+   	 		<div class="col-xs-1 vcenter"><%= time %> minutes</div>
+   	 		<div class="col-xs-2 vcenter"><%= link_to image_tag('recipe.png'), edit_search_path(m["id"]) %></div>
+   	 </div>
    	 <% end %>
+	</div>
 </div>

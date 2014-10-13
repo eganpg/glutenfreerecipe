@@ -1,19 +1,23 @@
 require 'open-uri'
  class SearchesController < ApplicationController
   def index
-
+    @name = User.all
    end
    def new
    	@search = Searches.new
    end
    def create
+    @name = User.all.reverse
     urlmeta = "http://api.yummly.com/v1/api/metadata/allergy?_app_id=a1c433e1&_app_key=c233031482ae3bce20a06083aa19d47f"
     responsemeta = HTTParty.get(urlmeta)
    	search = params[:search]
-   	url = "http://api.yummly.com/v1/api/recipes?_app_id=a1c433e1&_app_key=2de27003828941dce82fb211b78f4425&q=" + search + "&allowedAllergy[]=393%5EGluten-Free"
-   	response = HTTParty.get(url)
+    clean_search = search.tr(' ', '+')
     
+   	url = "http://api.yummly.com/v1/api/recipes?_app_id=a1c433e1&_app_key=2de27003828941dce82fb211b78f4425&q=" + clean_search + "&allowedAllergy[]=393%5EGluten-Free&maxResult=50"
+   	response = HTTParty.get(url)
    	@matches = response["matches"]
+    @user = User.create(name: search)
+
     
     render new_search_path
    end	 

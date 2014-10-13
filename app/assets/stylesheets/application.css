@@ -19,20 +19,33 @@
  *= require_tree .
  *= require_self
  */
-
-body {
+.jumbotron {
+	background-color: rgba(0, 0, 20, 0.6) !important;
+	color: white;
+}
+.wrapper {
 	background-size: cover;
-	background-image: url('berry.jpg');
+	background-image: url('berry.jpg') !important;
 }
 
 .header {
 	text-align: center;
 }
 
+.footer {
+	text-align: center;
+	margin-top: 1%;
+}
+
 .jumbotron {
 	margin-top: 12%;
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
 .searchbar {
 	margin-top: 1%;
 }
@@ -44,7 +57,9 @@ body {
 	margin-right: 1%;
 	margin-bottom: 1%;
 	text-align: center;
-	border-radius: 5%;
+	border-radius: 2%;
+	border-color: darkgrey;
+	border-style: solid;
 
 }
 .image {
