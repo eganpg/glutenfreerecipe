@@ -31,7 +31,8 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-
+YUM_ID = "a1c433e1"
+YUM_KEY = "2de27003828941dce82fb211b78f4425"
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

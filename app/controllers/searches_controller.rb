@@ -8,14 +8,24 @@ require 'open-uri'
    end
    def create
     @name = User.all.reverse
+
+    #find meta information for sorting
+
     urlmeta = "http://api.yummly.com/v1/api/metadata/allergy?_app_id=a1c433e1&_app_key=c233031482ae3bce20a06083aa19d47f"
     responsemeta = HTTParty.get(urlmeta)
-   	search = params[:search]
+   	
+    #locate search paramaters, remove spaces and replace with +
+
+    search = params[:search]
     clean_search = search.tr(' ', '+')
-    
-   	url = "http://api.yummly.com/v1/api/recipes?_app_id=a1c433e1&_app_key=2de27003828941dce82fb211b78f4425&q=" + clean_search + "&allowedAllergy[]=393%5EGluten-Free&maxResult=50"
+   	
+    #API Call
+
+    url = "http://api.yummly.com/v1/api/recipes?_app_id=" + YUM_ID + "&_app_key=" + YUM_KEY + "&q=" + clean_search + "&allowedAllergy[]=393%5EGluten-Free&maxResult=50"
    	response = HTTParty.get(url)
    	@matches = response["matches"]
+
+    #Store name of search in database
     @user = User.create(name: search)
 
     
