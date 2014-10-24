@@ -30,7 +30,7 @@ require 'open-uri'
     
     
     YUM_ID = 'a1c433e1'
-    YUM_KEY = 'c233031482ae3bce20a06083aa19d47f'
+    YUM_KEY = '29e369c9b05882a2c89015a863db4ae8'
     
     
    	
