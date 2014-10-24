@@ -29,14 +29,13 @@ require 'open-uri'
     
     
     
-    YUM_ID = 'a1c433e1'
-    YUM_KEY = '29e369c9b05882a2c89015a863db4ae8'
+   
     
     
    	
     #API Call
 
-    url = "http://api.yummly.com/v1/api/recipes?_app_id=" + YUM_ID + "&_app_key=" + YUM_KEY + "&q=" + clean_search + "&allowedAllergy[]=393%5EGluten-Free&maxResult=50"
+    url = "http://api.yummly.com/v1/api/recipes?_app_id=" + 'a1c433e1' + "&_app_key=" + '29e369c9b05882a2c89015a863db4ae8' + "&q=" + clean_search + "&allowedAllergy[]=393%5EGluten-Free&maxResult=50"
    	response = HTTParty.get(url)
    	@matches = response["matches"]
     
