@@ -7,7 +7,9 @@ require 'open-uri'
    	@search = Searches.new
    end
    def create
-    @name = User.all.reverse
+    @names = User.all.reverse
+    @name = @names.take(30)
+    
 
     #find meta information for sorting
 
@@ -17,16 +19,37 @@ require 'open-uri'
     #locate search paramaters, remove spaces and replace with +
 
     search = params[:search]
-    clean_search = search.tr(' ', '+')
+    if (search.match(/\s+/))
+      clean_search = search.gsub!(/\s+/,"+")
+    else
+      clean_search = search  
+      
+    end
+    
+    
+    
+    
+    
+    
+    
    	
     #API Call
 
     url = "http://api.yummly.com/v1/api/recipes?_app_id=" + YUM_ID + "&_app_key=" + YUM_KEY + "&q=" + clean_search + "&allowedAllergy[]=393%5EGluten-Free&maxResult=50"
    	response = HTTParty.get(url)
    	@matches = response["matches"]
+    
+
+    
 
     #Store name of search in database
+    searcher = search.gsub!("+"," ")
+    
+    if(searcher != nil)
+    @user = User.create(name: searcher)
+  else
     @user = User.create(name: search)
+  end
 
     
     render new_search_path

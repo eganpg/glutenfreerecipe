@@ -5,7 +5,7 @@
 
 		<p><%= form_tag searches_path, :method => 'post' do %>
 			<div class="col-xs-6 col-xs-offset-3 searchbar"><%= text_field_tag :search, params[:search], class:"form-control col-xs-6", placeholder:"Gluten-Free Only Results" %></div>
-			<%= submit_tag "Search", class:"btn btn-primary searchbar" %>
+			<%= submit_tag "Search", :onclick => "swal('Test')", class:"btn btn-primary searchbar" %>
 			<% end %>
 			</div>
 		</p>
@@ -14,4 +14,5 @@
 
 
 	</div>
+	<p class="centerthis">Site is currently under development, please be patient as we improve.</br> Comments are welcome.</p>
 </div>

@@ -6,19 +6,41 @@
 		<% end %>
 
 	</div>
-	<div class="col-xs-10">
-	<% @matches.each do |m| %>
-   	 	<div class="col-xs-12 recipe">
-   	 		<div class="col-xs-2 vcenter"><h3><%= m["recipeName"] %></h3> </div>             
-   	 		<div class="col-xs-2 vcenter"><%= image_tag m["imageUrlsBySize"]['90'] %></div>
-   	 		<div class="col-xs-2 vcenter"><% m["ingredients"].each do |i| %>
-   	 			<%= i %>,
-   	 			<% end %></div>
-   	 		<% s = m["totalTimeInSeconds"] %>
-   	 		<% time = s.to_i / 60 %>
-   	 		<div class="col-xs-1 vcenter"><%= time %> minutes</div>
-   	 		<div class="col-xs-2 vcenter"><%= link_to image_tag('recipe.png'), edit_search_path(m["id"]) %></div>
-   	 </div>
-   	 <% end %>
-	</div>
+	<div class="col-xs-7">
+     <table class="table-striped">
+      <% count = 0 %>
+      <% @matches.each do |m| %>
+
+
+
+      <tr><th>Recipe Name</th><th class="centerthis">Photo</th><th>Ingredients</th><th class="centerthis">Cook Time</th></tr>
+      <td class="col-xs-4"><h3><%= link_to m["recipeName"], edit_search_path(m["id"]) %></h3></td>
+      <% image_url = m['imageUrlsBySize'] %>
+      <% count = count + 1 %>
+      <% actual_image_url = image_url['90'] %>
+
+      <td class="col-xs-2"><%= image_tag(actual_image_url) %></td>
+
+      <td><% m["ingredients"].each do |i| %>
+       <%= i %>,
+       <% end %></td>
+       <% s = m["totalTimeInSeconds"] %>
+       <% time = s.to_i / 60 %>
+       <td class="centerthis"><%= time %> minutes</td>
+    </tr>
+
+
+
+ <% end %>
+ </table>
+</div>
+
+<div class="col-xs-3">
+   <%= image_tag('ramps.png') %>
+   <p class="centerthis">We are still in development, please mind our errors<p>
+   <%= image_tag('roastedredpeppersaladwithcapersandbasil.png') %>
+   <p class="centerthis">Thanks for Visiting</p>
+   <%= image_tag('cauliflower.png') %>
+
+</div>
 </div>
