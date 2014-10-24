@@ -13,13 +13,14 @@
 
 
 
-      <tr><th>Recipe Name</th><th class="centerthis">Photo</th><th>Ingredients</th><th class="centerthis">Cook Time</th></tr>
+      <tr><th>Recipe Name</th><th>Ingredients</th><th class="centerthis">Cook Time</th></tr>
       <td class="col-xs-4"><h3><%= link_to m["recipeName"], edit_search_path(m["id"]) %></h3></td>
+      
       <% image_url = m['imageUrlsBySize'] %>
       <% count = count + 1 %>
-      <% actual_image_url = image_url['90'] %>
-
-      <td class="col-xs-2"><%= image_tag(actual_image_url) %></td>
+      <%# actual_image_url = image_url['90'] %>
+      
+      <%#= image_tag actual_image_url %>
 
       <td><% m["ingredients"].each do |i| %>
        <%= i %>,
